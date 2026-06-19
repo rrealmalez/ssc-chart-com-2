@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时时彩资料索引 | 知识库入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f4f6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #1e2a3a;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* 分区卡片 */
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e6eaef;
+            padding: 1.8rem 2rem;
+            margin-bottom: 1.8rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        /* 标题 */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0f1923;
+            margin-bottom: 0.3rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #1f2a3f;
+            border-left: 4px solid #5c7cfa;
+            padding-left: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin-top: 1.4rem;
+            margin-bottom: 0.4rem;
+            color: #1f2a3f;
+        }
+
+        /* 标签 */
+        .subhead {
+            font-size: 0.95rem;
+            color: #5f6c80;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #eef1f5;
+            color: #2c3e50;
+            font-size: 0.75rem;
+            padding: 0.15rem 0.65rem;
+            border-radius: 30px;
+            margin-right: 0.4rem;
+            border: 1px solid #dde2e9;
+        }
+
+        /* 网格 / 目录感 */
+        .dir-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 1.2rem;
+            margin-top: 0.8rem;
+        }
+
+        .dir-item {
+            background: #f8f9fc;
+            border-radius: 12px;
+            padding: 1.1rem 1.2rem;
+            border: 1px solid #e5e9f0;
+            transition: background 0.15s;
+        }
+
+        .dir-item:hover {
+            background: #eef3fc;
+        }
+
+        .dir-item strong {
+            display: block;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            color: #0f1e33;
+        }
+
+        .dir-item span {
+            font-size: 0.88rem;
+            color: #4b5a70;
+        }
+
+        /* 列表 */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.4rem;
+        }
+
+        li::before {
+            content: "•";
+            color: #5c7cfa;
+            font-weight: bold;
+            position: absolute;
+            left: 0.1rem;
+        }
+
+        .info-sublist li::before {
+            content: "▹";
+            color: #7f8fa6;
+        }
+
+        /* 提示区块 */
+        .tip-box {
+            background: #f2f8ff;
+            border: 1px solid #d3e0f7;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0 0.5rem;
+        }
+
+        .tip-box i {
+            font-style: normal;
+            background: #dce6f9;
+            padding: 0.1rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #203a6b;
+        }
+
+        /* FAQ 摘要 */
+        .faq-item {
+            border-bottom: 1px solid #eaeef4;
+            padding: 0.9rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #0b1a2e;
+        }
+
+        .faq-a {
+            font-size: 0.93rem;
+            color: #3b4a60;
+            margin-top: 0.2rem;
+            padding-left: 0.8rem;
+        }
+
+        /* 链接 */
+        a {
+            color: #3366cc;
+            text-decoration: none;
+            border-bottom: 1px dotted #b3c7e8;
+            transition: border-bottom 0.15s, color 0.15s;
+        }
+
+        a:hover {
+            color: #1a3c7a;
+            border-bottom: 1px solid #1a3c7a;
+        }
+
+        /* 按钮 */
+        .btn-soft {
+            display: inline-block;
+            background: #ffffff;
+            border: 1px solid #d0d8e3;
+            border-radius: 30px;
+            padding: 0.5rem 1.4rem;
+            font-size: 0.9rem;
+            color: #1f2a3f;
+            transition: background 0.2s, border-color 0.2s;
+            cursor: default;
+        }
+
+        .btn-soft:hover {
+            background: #eef2f8;
+            border-color: #a9b9cd;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .card {
+                padding: 1.2rem 1rem;
+            }
+
+            h1 {
+                font-size: 1.7rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            .dir-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dfe5ed;
+            margin: 1.8rem 0;
+        }
+
+        .footer-note {
+            font-size: 0.85rem;
+            color: #6b7a8f;
+            text-align: center;
+            padding: 1rem 0 0.4rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HERO / 标题区 -->
+    <div class="card" style="padding-bottom:1.2rem;">
+        <h1>时时彩 · 资料索引</h1>
+        <div class="subhead">
+            <span class="badge">知识库入口</span>
+            <span class="badge">整理与导航</span>
+            <span class="badge">信息归集</span>
+        </div>
+        <p style="font-size:1.05rem; max-width: 680px;">
+            这里是一份围绕<span style="font-weight:500;">时时彩</span>的文档式指南，从概念、玩法分类到数据参考，
+            帮助浏览者快速定位感兴趣的内容。页面本身不提供实时开奖，而是作为资料梳理的起点。
+        </p>
+    </div>
+
+    <!-- 说明区：目录感 分类 -->
+    <div class="card">
+        <h2>📂 主题目录</h2>
+        <div class="dir-grid">
+            <div class="dir-item">
+                <strong>基础认识</strong>
+                <span>规则、术语与常见问题</span>
+            </div>
+            <div class="dir-item">
+                <strong>玩法分类</strong>
+                <span>五星、三星、二星、定位胆等</span>
+            </div>
+            <div class="dir-item">
+                <strong>数据图表</strong>
+                <span>历史号码、和值、跨度分布</span>
+            </div>
+            <div class="dir-item">
+                <strong>工具与参考</strong>
+                <span>计算器、冷热统计、走势插件</span>
+            </div>
+            <div class="dir-item">
+                <strong>术语词典</strong>
+                <span>常用缩略语与行业表达</span>
+            </div>
+            <div class="dir-item">
+                <strong>风险提示</strong>
+                <span>理性参与，合规参考</span>
+            </div>
+        </div>
+        <p style="margin-top:1rem; font-size:0.93rem; color:#3e5068;">
+            每个模块都指向更细致的说明页，具体内容可在
+            <a href="https://ssc-chart.com">时时彩</a> 资料集中查阅。
+            建议从“基础认识”开始，逐步建立整体框架。
+        </p>
+    </div>
+
+    <!-- 介绍区：时时彩的常见切面 -->
+    <div class="card">
+        <h2>🔍 关于时时彩</h2>
+        <p>
+            “时时彩”通常指一种高频数字游戏，每期从 0-9 中摇出若干位号码，
+            按照位置和组合方式设定不同奖级。其特点在于开奖频率高、组合丰富，
+            因此衍生出多种分析思路和记录方法。本文档不讨论具体预测，仅从信息索引角度提供结构梳理。
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top:0.8rem;">
+            <span class="btn-soft">🎯 五星通选</span>
+            <span class="btn-soft">🎲 三星组三</span>
+            <span class="btn-soft">📊 和值尾</span>
+            <span class="btn-soft">📈 跨度</span>
+        </div>
+    </div>
+
+    <!-- 提示区 + 相关信息 -->
+    <div class="card">
+        <h2>💡 使用提示</h2>
+        <div class="tip-box">
+            <i>📌 信息属性</i> 本站所有资料仅供学习参考，不构成任何投注建议。
+            请保持理性，将游戏视为娱乐活动。
+        </div>
+        <div class="tip-box" style="background:#f5f7fa; border-color:#d7dee8;">
+            <i>🧭 导航建议</i> 对于初次接触的浏览者，建议先阅读“玩法分类”和“术语词典”小节，
+            再配合数据图表理解历史分布。相关文章可在主站
+            <a href="https://ssc-chart.com">时时彩</a> 页面中找到。
+        </div>
+
+        <h3 style="margin-top:1.5rem;">📎 相关信息</h3>
+        <ul class="info-sublist">
+            <li>常见号码形态：组三、组六、豹子、对子</li>
+            <li>和值范围与出现频率参考 (0~27)</li>
+            <li>号码分布冷热统计 (近30期/50期)</li>
+            <li>定位胆单双、大小、质合等基础分类</li>
+        </ul>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="card">
+        <h2>❓ 常见问题摘要</h2>
+        <div class="faq-item">
+            <div class="faq-q">时时彩与排列三/福彩3D有何异同？</div>
+            <div class="faq-a">都是基于0-9的数字组合游戏，但时时彩期次更多，位置玩法更细（如五星、三星、二星）。具体规则可参考主站说明。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">走势图应该怎么看？</div>
+            <div class="faq-a">走势图展示历史开奖号码的分布，便于观察冷热、连开、遗漏等特征。建议结合多种维度（和值、跨度、奇偶）综合分析。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">资料中的“跨度”是指什么？</div>
+            <div class="faq-a">跨度指开奖号码中最大数字与最小数字的差值，是常用的形态参考指标之一。</div>
+        </div>
+        <div style="margin-top:1rem;">
+            <span style="font-size:0.9rem; color:#4d627a;">更多问答可查阅 </span>
+            <a href="https://ssc-chart.com">时时彩</a> 知识库。
+        </div>
+    </div>
+
+    <!-- 额外：引用 / 边界 -->
+    <div class="card" style="background:#fafbfc;">
+        <p style="font-size:0.95rem; color:#3c4d66;">
+            <span style="font-weight:500;">本页定位：</span> 资料整理入口，提供背景说明、分类导航与常见问题摘要。
+            所有内容均基于公开信息汇编，不涉及实时开奖或诱导行为。
+        </p>
+    </div>
+
+    <hr>
+    <div class="footer-note">
+        <span>内容索引 · 时时彩知识库 · 仅供学习参考</span>
+    </div>
+
+</div>
+</body>
+</html>

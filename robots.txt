@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rrealmalez.github.io/ssc-chart-com-2/sitemap.xml
